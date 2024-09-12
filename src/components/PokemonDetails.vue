@@ -27,15 +27,35 @@ export default {
 </script>
 
 <template>
-    <div class="container" v-if="pokemon">
-        <h2>{{  pokemon.name.toUpperCase() }}</h2>
-        <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
-        <p>Tipo: {{ pokemon.types.map(t => t.type.name).join(', ') }}</p>
-        <button @click="catchPokemon">Cattura</button>
-        <button @click="releasePokemon" v-if="isCaptured">Libera</button>
+    <div class="container mt-5" v-if="pokemon">
+        <div class="row">
+            <h2>{{  pokemon.name.toUpperCase() }}</h2>
+
+            <div class="col bgDetails">
+                <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+            </div>
+            
+            <p class="mt-3">Tipo: {{ pokemon.types.map(t => t.type.name).join(', ') }}</p>
+            
+            <div class="col">
+                <button class="btn btn-success me-2"  @click="catchPokemon">Cattura</button>
+                <button class="btn btn-warning" @click="releasePokemon" v-if="isCaptured">Libera</button>
+            </div>
+        </div>
     </div>
 
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h2 {
+    color: white;
+}
+.bgDetails {
+    background-color: gray;
+    img {
+        width: 150px;
+        background-color: white;
+    }
+}
+</style>

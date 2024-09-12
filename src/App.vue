@@ -34,13 +34,34 @@ export default {
 </script>
 
 <template>
-  <PokemonSearch @pokemon-found="showPokemon" />
 
-  <PokemonDetails v-if="selectedPokemon" :pokemon="selectedPokemon" @catch-pokemon="updatePokemonList"
-    @release-pokemon="updatePokemonList" />
+  <div class="container bg rounded-4 mt-5 text-center">
+    <div class="row">
+      <div class="col">
+        <PokemonSearch @pokemon-found="showPokemon" />
 
-  <Pokedex :pokemon-list="pokemonList" @pokemon-selected="showPokemonDetails" />
+        <PokemonDetails v-if="selectedPokemon" :pokemon="selectedPokemon" @catch-pokemon="updatePokemonList"
+          @release-pokemon="updatePokemonList" />
+      </div>
+
+      <div class="col">
+        <Pokedex :pokemon-list="pokemonList" @pokemon-selected="showPokemonDetails" />
+      </div>
+
+    </div>
+  </div>
 
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .bg {
+    background-color: red;
+    width: 100vw;
+    // debug
+    height: 500px;
+  }
+
+  p {
+    color: white;
+  }
+</style>

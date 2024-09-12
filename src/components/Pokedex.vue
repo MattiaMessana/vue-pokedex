@@ -23,11 +23,11 @@ export default {
 </script>
 
 <template>
-<div class="container">
+<div class="container rounded-4 mt-3 pokedex">
     <h3>Il tuo Pokedex</h3>
-    <ul>
+    <ul class="d-flex">
         <li v-for="pokemon in pokemonList" :key="pokemon.name" @click="selectPokemon(pokemon)" >
-            {{ pokemon.name }}
+              <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
         </li>
     </ul>
 </div>
@@ -36,5 +36,15 @@ export default {
 
 
 <style lang="scss" scoped>
+.pokedex {
+    background-color: white;
+    // debug
+    height: 470px;
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
+}
 
 </style>
