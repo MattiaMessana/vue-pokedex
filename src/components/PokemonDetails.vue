@@ -1,11 +1,8 @@
 <script>
-import { capitalize } from 'vue';
-
 export default {
     props: ['pokemon'],
     mounted() {
         console.log(this.pokemon);
-        
     },
     computed: {
         isCaptured() {
@@ -15,9 +12,13 @@ export default {
     methods: {
         catchPokemon() {
             localStorage.setItem(this.pokemon.name, JSON.stringify(this.pokemon));
+            // console.log(localStorage);
+            this.$emit('catch-pokemon');
+            
         },
         releasePokemon() {
             localStorage.removeItem(this.pokemon.name);
+            this.$emit('release-pokemon');
         },
     },
 };
